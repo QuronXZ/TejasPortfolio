@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="300" fill="#00b894" opacity="0.2" />
+  
+  <!-- Character Design Sheet -->
+  <g transform="translate(50, 50)">
+    <!-- Character 1 - Sci-Fi Hero -->
+    <g transform="translate(0, 0)">
+      <!-- Body -->
+      <rect x="20" y="40" width="40" height="60" fill="#0984e3" rx="5" />
+      
+      <!-- Head -->
+      <circle cx="40" cy="25" r="20" fill="#ffeaa7" />
+      <path d="M30 25 Q40 35 50 25" stroke="#2d3436" stroke-width="1" fill="none" />
+      <circle cx="30" cy="20" r="3" fill="#2d3436" />
+      <circle cx="50" cy="20" r="3" fill="#2d3436" />
+      
+      <!-- Helmet -->
+      <path d="M20 25 Q40 0 60 25 L60 30 Q40 40 20 30 Z" fill="#0984e3" fill-opacity="0.5" />
+      
+      <!-- Arms -->
+      <rect x="10" y="50" width="10" height="30" fill="#0984e3" rx="3" />
+      <rect x="60" y="50" width="10" height="30" fill="#0984e3" rx="3" />
+      
+      <!-- Legs -->
+      <rect x="25" y="100" width="15" height="30" fill="#2d3436" rx="3" />
+      <rect x="40" y="100" width="15" height="30" fill="#2d3436" rx="3" />
+      
+      <!-- Weapon -->
+      <rect x="70" y="60" width="30" height="8" fill="#636e72" rx="2" />
+      <rect x="75" y="55" width="5" height="18" fill="#636e72" />
+    </g>
+    
+    <!-- Character 2 - Sci-Fi Companion -->
+    <g transform="translate(120, 0)">
+      <!-- Body -->
+      <rect x="20" y="40" width="40" height="60" fill="#fd79a8" rx="5" />
+      
+      <!-- Head -->
+      <circle cx="40" cy="25" r="20" fill="#ffeaa7" />
+      <path d="M30 25 Q40 35 50 25" stroke="#2d3436" stroke-width="1" fill="none" />
+      <circle cx="30" cy="20" r="3" fill="#2d3436" />
+      <circle cx="50" cy="20" r="3" fill="#2d3436" />
+      
+      <!-- Hair -->
+      <path d="M20 15 Q40 -5 60 15 L60 25 Q40 15 20 25 Z" fill="#6c5ce7" />
+      
+      <!-- Arms -->
+      <rect x="10" y="50" width="10" height="30" fill="#fd79a8" rx="3" />
+      <rect x="60" y="50" width="10" height="30" fill="#fd79a8" rx="3" />
+      
+      <!-- Legs -->
+      <rect x="25" y="100" width="15" height="30" fill="#2d3436" rx="3" />
+      <rect x="40" y="100" width="15" height="30" fill="#2d3436" rx="3" />
+      
+      <!-- Tech Device -->
+      <rect x="0" y="60" width="15" height="20" fill="#00b894" rx="2" />
+      <circle cx="7.5" cy="70" r="5" fill="#81ecec" />
+    </g>
+    
+    <!-- Character 3 - Sci-Fi Villain -->
+    <g transform="translate(240, 0)">
+      <!-- Body -->
+      <rect x="20" y="40" width="40" height="60" fill="#2d3436" rx="5" />
+      
+      <!-- Head -->
+      <circle cx="40" cy="25" r="20" fill="#636e72" />
+      <path d="M30 30 Q40 20 50 30" stroke="#dfe6e9" stroke-width="1" fill="none" />
+      <circle cx="30" cy="20" r="3" fill="#e17055" />
+      <circle cx="50" cy="20" r="3" fill="#e17055" />
+      
+      <!-- Helmet -->
+      <path d="M20 25 Q40 0 60 25 L60 30 Q40 40 20 30 Z" fill="#636e72" fill-opacity="0.5" />
+      
+      <!-- Arms -->
+      <rect x="10" y="50" width="10" height="30" fill="#2d3436" rx="3" />
+      <rect x="60" y="50" width="10" height="30" fill="#2d3436" rx="3" />
+      
+      <!-- Legs -->
+      <rect x="25" y="100" width="15" height="30" fill="#636e72" rx="3" />
+      <rect x="40" y="100" width="15" height="30" fill="#636e72" rx="3" />
+      
+      <!-- Weapon -->
+      <rect x="70" y="60" width="20" height="8" fill="#e17055" rx="2" />
+      <circle cx="80" cy="64" r="5" fill="#fd79a8" />
+    </g>
+  </g>
+  
+  <!-- Character Stats -->
+  <g transform="translate(50, 200)">
+    <!-- Hero Stats -->
+    <rect x="0" y="0" width="80" height="60" fill="white" stroke="#2d3436" stroke-width="1" rx="5" />
+    <text x="10" y="15" font-family="Arial" font-size="8" fill="#2d3436">HERO</text>
+    <text x="10" y="30" font-family="Arial" font-size="8" fill="#2d3436">STRENGTH: 8/10</text>
+    <text x="10" y="40" font-family="Arial" font-size="8" fill="#2d3436">AGILITY: 7/10</text>
+    <text x="10" y="50" font-family="Arial" font-size="8" fill="#2d3436">TECH: 9/10</text>
+  </g>
+  
+  <g transform="translate(160, 200)">
+    <!-- Companion Stats -->
+    <rect x="0" y="0" width="80" height="60" fill="white" stroke="#2d3436" stroke-width="1" rx="5" />
+    <text x="10" y="15" font-family="Arial" font-size="8" fill="#2d3436">COMPANION</text>
+    <text x="10" y="30" font-family="Arial" font-size="8" fill="#2d3436">STRENGTH: 5/10</text>
+    <text x="10" y="40" font-family="Arial" font-size="8" fill="#2d3436">AGILITY: 9/10</text>
+    <text x="10" y="50" font-family="Arial" font-size="8" fill="#2d3436">TECH: 10/10</text>
+  </g>
+  
+  <g transform="translate(270, 200)">
+    <!-- Villain Stats -->
+    <rect x="0" y="0" width="80" height="60" fill="white" stroke="#2d3436" stroke-width="1" rx="5" />
+    <text x="10" y="15" font-family="Arial" font-size="8" fill="#2d3436">VILLAIN</text>
+    <text x="10" y="30" font-family="Arial" font-size="8" fill="#2d3436">STRENGTH: 10/10</text>
+    <text x="10" y="40" font-family="Arial" font-size="8" fill="#2d3436">AGILITY: 6/10</text>
+    <text x="10" y="50" font-family="Arial" font-size="8" fill="#2d3436">TECH: 8/10</text>
+  </g>
+  
+  <!-- Title -->
+  <rect x="100" y="10" width="200" height="30" fill="#00b894" rx="5" />
+  <text x="110" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="white">CHARACTER DESIGNS</text>
+</svg>

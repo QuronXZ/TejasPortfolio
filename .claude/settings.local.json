@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:madbox.io)",
+      "WebFetch(domain:www.pola.co.jp)",
+      "Bash(start msedge project1.html)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

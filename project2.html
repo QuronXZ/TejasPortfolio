@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactical FPS Level Design - Game Design Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Page Load Animation */
+        body {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-page {
+            padding: 120px 5% 80px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .project-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #6c5ce7;
+        }
+        .project-header p {
+            font-size: 1.1rem;
+            color: #636e72;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .project-content h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 15px;
+            color: #2d3436;
+        }
+
+        .project-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #636e72;
+        }
+        .project-content ul {
+            margin-bottom: 25px;
+        }
+        .project-content li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #636e72;
+        }
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid #dfe6e9;
+        }
+        .project-nav a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #6c5ce7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .project-nav a:hover {
+            background-color: #5649c0;
+            transform: translateY(-3px);
+        }
+        .back-to-home {
+            display: inline-block;
+            margin-top: 20px;
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-to-home:hover {
+            text-decoration: underline;
+        }
+
+        /* YouTube Video Embed Styling */
+        .video-section {
+            max-width: 1000px;
+            margin: 20px auto 35px;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            text-align: center;
+            color: #636e72;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        /* Staggered content animation */
+        .project-content > * {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .project-content > *:nth-child(1) { animation-delay: 0.4s; }
+        .project-content > *:nth-child(2) { animation-delay: 0.5s; }
+        .project-content > *:nth-child(3) { animation-delay: 0.6s; }
+        .project-content > *:nth-child(4) { animation-delay: 0.7s; }
+        .project-content > *:nth-child(5) { animation-delay: 0.8s; }
+        .project-content > *:nth-child(6) { animation-delay: 0.9s; }
+        .project-content > *:nth-child(7) { animation-delay: 1s; }
+        .project-content > *:nth-child(8) { animation-delay: 1.1s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html#home">GD<span>Portfolio</span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-page">
+        <div class="project-header">
+            <h1>Tactical FPS Level Design</h1>
+            <p>A competitive multiplayer map designed for balanced team-based gameplay</p>
+        </div>
+
+        <!-- YouTube Video Embed -->
+        <div class="video-section">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Tactical FPS Level Design - Project Showcase"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-caption">Project Showcase Video - Watch the full walkthrough</p>
+        </div>
+
+        <div class="project-content">
+            <h2>Project Overview</h2>
+            <p>This tactical FPS level was designed to create intense, balanced gameplay for competitive 5v5 matches. The map features multiple pathways, strategic chokepoints, and carefully placed cover to encourage teamwork and tactical decision-making.</p>
+
+            <h2>Design Goals</h2>
+            <ul>
+                <li>Create a balanced map that doesn't favor either attacking or defending teams</li>
+                <li>Design multiple viable strategies for both teams</li>
+                <li>Ensure clear readability of spaces and good player flow</li>
+                <li>Implement strategic depth through vertical gameplay and utility usage</li>
+            </ul>
+
+            <h2>Layout Design</h2>
+            <p>The map follows a modified three-lane structure with two bomb sites. Each lane offers different risk/reward scenarios - the middle provides the fastest route but exposes players to crossfire, while the outer lanes are safer but take longer to traverse. Key areas include:</p>
+            <ul>
+                <li>Bomb Site A: An open area with long sightlines, favoring long-range engagements</li>
+                <li>Bomb Site B: A tighter space with multiple entry points, encouraging close-quarters combat</li>
+                <li>Mid Control: A contested area that provides strategic advantages to the team that controls it</li>
+            </ul>
+
+            <h2>Playtesting Insights</h2>
+            <p>Through multiple rounds of playtesting, I identified and resolved several issues:</p>
+            <ul>
+                <li>Adjusted cover placement to prevent overpowered defensive positions</li>
+                <li>Widened certain corridors to prevent grenade spam</li>
+                <li>Added subtle visual cues to improve callout clarity</li>
+                <li>Balanced timing so both teams reach key positions simultaneously</li>
+            </ul>
+
+            <h2>Technical Considerations</h2>
+            <p>The level was designed with performance in mind, using occlusion culling effectively and maintaining consistent frame rates even during intense firefights. Sound propagation was carefully considered to ensure audio cues provide meaningful tactical information.</p>
+        </div>
+
+        <div class="project-nav">
+            <a href="project1.html">← Previous Project: Fantasy RPG World</a>
+            <a href="project3.html">Next Project: Character Design →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Game Design Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
