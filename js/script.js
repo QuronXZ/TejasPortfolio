@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.querySelector(".navbar");
     if (navbar) {
       if (window.scrollY > 50) {
-        navbar.style.padding = "15px 0";
+        navbar.style.padding = "2px 0";
         navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
       } else {
-        navbar.style.padding = "20px 0";
+        navbar.style.padding = "20px 2px 0 0";
         navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
       }
     }
@@ -350,17 +350,14 @@ document.addEventListener("DOMContentLoaded", () => {
     element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
   });
 
-  const simpleObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
-        }
-      });
-    },
-    observerOptions
-  );
+  const simpleObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  }, observerOptions);
 
   otherElements.forEach((element) => {
     simpleObserver.observe(element);
@@ -432,4 +429,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateTrail();
   }
+
+  // ===== LOCO ROCO INSPIRED MOUSE TRAIL EFFECT =====
+  let mouseTrailBubbles = [];
+  let lastMousePos = { x: 0, y: 0 };
+  let mouseMoveThrottle = 0;
+
+  // Loco Roco color palette
+  const locoRocoColors = [
+    "#FFD700", // Golden yellow
+    "#FF69B4", // Hot pink
+    "#00CED1", // Dark turquoise
+    "#FF6347", // Tomato red
+    "#98FB98", // Pale green
+    "#DDA0DD", // Plum
+    "#F0E68C", // Khaki
+    "#87CEEB", // Sky blue
+    "#FFA07A", // Light salmon
+    "#20B2AA", // Light sea green
+  ];
+
+  function createTrailBubble(x, y) {
+    const bubble = document.createElement("div");
+    bubble.className = "trail-bubble";
+
+    // Random size between 8-20px
+    const size = Math.random() * 12 + 8;
+
+    // Random color from Loco Roco palette
+    const color =
+      locoRocoColors[Math.floor(Math.random() * locoRocoColors.length)];
+
+    // Random offset for natural movement
+    const offsetX = (Math.random() - 0.5) * 30;
+    const offsetY = (Math.random() - 0.5) * 30;
+
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+    bubble.style.left = x + offsetX + "px";
+    bubble.style.top = y + offsetY + "px";
+    bubble.style.background = `radial-gradient(circle at 30% 30%, ${color}, ${color}dd)`;
+    bubble.style.boxShadow = `0 0 ${size / 2}px ${color}66, inset 0 0 ${
+      size / 4
+    }px rgba(255,255,255,0.3)`;
+
+    document.body.appendChild(bubble);
+
+    // Store bubble reference
+    mouseTrailBubbles.push(bubble);
+
+    // Remove bubble after animation completes (1 second)
+    setTimeout(() => {
+      if (bubble.parentNode) {
+        bubble.parentNode.removeChild(bubble);
+      }
+      // Remove from array
+      const index = mouseTrailBubbles.indexOf(bubble);
+      if (index > -1) {
+        mouseTrailBubbles.splice(index, 1);
+      }
+    }, 1000);
+  }
+
+  // Mouse move event listener for trail effect
+  document.addEventListener("mousemove", (e) => {
+    const currentTime = Date.now();
+
+    // Throttle bubble creation to prevent too many bubbles
+    if (currentTime - mouseMoveThrottle > 50) {
+      // Create bubble every 50ms max
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - lastMousePos.x, 2) +
+          Math.pow(e.clientY - lastMousePos.y, 2)
+      );
+
+      // Only create bubble if mouse moved enough distance
+      if (distance > 10) {
+        createTrailBubble(e.clientX, e.clientY);
+        lastMousePos = { x: e.clientX, y: e.clientY };
+        mouseMoveThrottle = currentTime;
+      }
+    }
+  });
+
+  // Clean up any remaining bubbles on page unload
+  window.addEventListener("beforeunload", () => {
+    mouseTrailBubbles.forEach((bubble) => {
+      if (bubble.parentNode) {
+        bubble.parentNode.removeChild(bubble);
+      }
+    });
+    mouseTrailBubbles = [];
+  });
 });
