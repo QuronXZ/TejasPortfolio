@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fantasy RPG World - Game Design Portfolio</title>
+    <title>Gamification for Writers: UI/UX app</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -751,7 +751,7 @@
             <ul class="nav-links">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#skills">Skills</a></li>
+                <!-- <li><a href="index.html#skills">Skills</a></li> -->
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
@@ -766,30 +766,25 @@
     <main class="project-page">
         <div class="project-header awards-header">
             <div class="awards-row">
-                <img src="images/proj2/logo2.png" alt="Couch Clash Logo" class="main-logo" />
-                <img src="images/proj2/Winner.png" alt="Winner Badge" class="award-badge" />
-                <img src="images/proj2/IGDC game showcase_black.png" alt="IGDC Game Showcase" class="award-badge" />
-                <img src="images/proj2/igdc SPOTLIGHT_black.png" alt="IGDC Spotlight" class="award-badge" />
-
+                <h1>WriterRPG: Gamification UI/UX</h1>
 
             </div>
 
-            <p>A two-player couch fighter where you control 3D and 2D characters.</p>
-            <p>Distract in 3D to win in 2D.</p>
+            <p>User research into writer struggles led to two targeted solutions: WriterRPG, which gamifies motivation, and Writers Net, which captures inspiration from daily life.</p>
         </div>
         <!-- Action Buttons -->
         <div class="project-buttons">
-            <a href="https://radvick.itch.io/couch-clash" class="btn btn-primary" target="_blank">
+            <a href="https://quron.itch.io/writerrpg" class="btn btn-primary" target="_blank">
                 🎮 Play now!
             </a>
-            <a href="gdd/Couch Clash Document.pdf" class="btn btn-secondary" target="_blank">
+            <a href="gdd/Gamification & UI UX documentation.pdf" class="btn btn-secondary" target="_blank">
                 📋 Check out the GDD →
             </a>
         </div>
         <!-- YouTube Video Embed -->
         <div class="video-section">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/watch?v=TM--QmDczN8" title="Fantasy RPG World Design - Project Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                <iframe src="https://www.youtube.com/embed/0meOaow1FwU?si=Ekis-ap9SuG6styE" title="Fantasy RPG World Design - Project Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
           </iframe>
             </div>
             <p class="video-caption">
@@ -804,16 +799,20 @@
             <div class="project-row">
 
                 <div class="text-col">
-                    <p><strong>Title:</strong> Couch Clash</p>
+                    <p><strong>Title:</strong> WriterRPG & Writer’s Net</p>
                     <p><strong>Engine:</strong> Unity</p>
                     <p><strong>Time to design and develop:</strong> 2 weeks</p>
-                    <p><strong>Genre:</strong> Local 1v1 Fighting / Party Game</p>
+                    <p><strong>Genre:</strong> Casual, Productivity</p>
+                    <p><strong>Core Idea:</strong> To explore the problems budding writers face and come up with a design intervention that would bridge the gap between idea and writing habit formation</p>
+
                     <p>
-                        <strong>Description:</strong> Couch Clash is a fast, goofy, and nostalgic local multiplayer fighting game that merges two worlds: 2D combat inspired by retro arcade brawlers and 3D couch chaos representing real-life player mischief.
+                        <strong>Description:</strong> Through in-depth user research; including surveys, interviews, and market analysis I identified key writer pain points: motivation loss, fleeting ideas, and inconsistent habits. The resulting solutions
+                        are WriterRPG, a gamified writing motivator, and Writers Net, a context-aware prompt generator, designed to directly address these barriers.
+
                     </p>
                 </div>
                 <div class="img-col">
-                    <img src="images/proj2/core_loop.png" alt="Couch Clash Overview" />
+                    <img src="images/proj4/Notification.png" alt="Couch Clash Overview" />
                 </div>
 
             </div>
@@ -822,305 +821,425 @@
 
         </section>
         <section class="project-section">
-            <h2 class="section-title">Core Gameplay</h2>
+            <h2 class="section-title">Design Solutions</h2>
             <p>
-                <strong>Core Mechanic:</strong> It’s a split-reality fighting game where two players battle inside a 2D pixel arena; just like playing another Mortal Kombat or Tekken; while their real-world avatars sitting on a couch can physically interfere
-                through 3D interactions.
+                <h2><u><strong>1) Writer's Net</strong></u></h2>
             </p>
+            <div class="img">
+                <img src="images/proj4/11.png" alt="Level Design" />
+                <img src="images/proj4/12.png" alt="Level Design" />
+                <img src="images/proj4/13.png" alt="Level Design" />
+                <p class="video-caption"> UI interface</p>
+            </div>
 
             <!-- Row 1 -->
-            <div class="project-row">
-                <div class="text-col">
-                    <p>
-                        <h3><strong>ATTACK</strong></h3>
-                    </p>
 
-                    <!-- <p>
-                        <ul style="list-style-type:disc;">
-                            <li><b><u>Platforms and Jumps:</u></b></li>
-                        </ul>
+            <div class="text-col">
 
-                    </p> -->
-                    <p>
-                        Attack in the 2D world just like you would in Mortal Kombat. Spam punches, land perfect kicks, and feel that classic arcade style rush.</p>
-                </div>
-                <div class="img-col">
-                    <img src="images/proj2/attack.gif" alt="Level Design" />
-                </div>
+                <p><b>Writers Net generates personalized, AI-driven prompts by leveraging your location and YouTube history. This context becomes the fuel for your writing, which is then gamified in WriterRPG—turning every word into XP to customize your avatar and maintain your streak.</b></p>
+
+                <p>
+                    <h4><b><u>1) Smart Personalization:</u></b></h4>
+                    <ul style="list-style-type:disc;">
+                        <li>Secure Google OAuth login.</li>
+                        <li>Context-aware prompts generated from user data (Location, YouTube History).</li>
+                        <li>AI-powered Micro-Prompts and a synthesized Daily Master Prompt.</li>
+                    </ul>
+                    <h4><b><u>2) Flexible Input & Archive:</u></b></h4>
+                    <ul style="list-style-type:disc;">
+                        <li>Multi-modal input: Text, Voice-to-Text, and Photo capture.</li>
+                        <li>A secure, searchable digital journal for all entries.</li>
+                        <li>Customizable daily writing reminders.</li>
+                    </ul>
+                    <h4><b><u>3) Motivational Gamification:</u></b></h4>
+                    <ul style="list-style-type:disc;">
+                        <li>XP & Avatar System: Earn 1.5 XP per word to unlock cosmetic customizations.</li>
+                        <li>Writing Streaks & StreakSafe: Track consistency with a forgiving mechanic to protect your streak.</li>
+                        <li>Achievements & Badges: Unlock rewards for milestones and challenges.</li>
+                    </ul>
+                    <!-- <ul>
+
+                        <li>Secure Google OAuth login.</li>
+
+                        <li><b>Levels 6-8:</b></li>
+                        <p>Teaching Core Mechanic of platform restoration & resource management</p>
+                        <li><b>Level 9:</b></li>
+                        <p>Bonus level for pressure release & fun</p>
+                        <li><b>Levels 10-17:</b></li>
+                        <p>Complex puzzles combining all mechanics</p>
+                    </ul> -->
+                </p>
+                <p></p>
             </div>
 
-            <!-- Row 2 -->
-            <div class="project-row">
 
-                <div class="text-col">
-                    <p>
-                        <h3><strong>DISTRACT</strong></h3>
-                    </p>
 
-                    <!-- <p>
-                        <ul style="list-style-type:disc;">
-                            <li><b><u>Keys:</u></b></li>
-                        </ul>
 
-                    </p> -->
-                    <p>Use sneaky 3D combos to distract your opponent in the real world. Push, fart, and pull off goofy pranks to stun them in 2D.</p>
-                </div>
-                <div class="img-col">
-                    <img src="images/proj2/distract.gif" alt="Mechanic Use Case" />
-                </div>
+            <p>
+                <h2><u><strong>2) WriterRPG</strong></u></h2>
+            </p>
+            <div class="img">
+                <img src="images/proj4/writer_rpg_gif.gif" alt="Level Design" />
+                <p class="video-caption"> Game Screenshot gif!</p>
             </div>
+
             <!-- Row 1 -->
-            <div class="project-row">
-                <div class="text-col">
-                    <p>
-                        <h3><strong>OVERPOWER</strong></h3>
-                    </p>
 
-                    <!-- <p>
-                        <ul style="list-style-type:disc;">
-                            <li><b><u>Platforms and Jumps:</u></b></li>
-                        </ul>
+            <div class="text-col">
 
-                    </p> -->
-                    <p>
-                        When your opponent’s stunned, it’s your moment to strike back and dominate! Turn playful chaos into a knockout victory.
-                    </p>
-                </div>
-                <div class="img-col">
-                    <img src="images/proj2/overpower.gif" alt="Level Design" />
-                </div>
+                <p><b>WriterRPG transforms your writing goals into epic boss battles, where every word you type is an attack that depletes an enemy's health bar. Conquer animated pixel-art villains and earn XP to unlock rewards, turning the solitary act of writing into a satisfying, game-like achievement.</b></p>
+
+                <p>
+                    <h4><b><u>1) Immersive Battle System:</u></b></h4>
+                    <ul style="list-style-type:disc;">
+                        <li>Gamified Writing Interface: Your document becomes a battle screen where words are your weapon.</li>
+                        <li>Animated Pixel-Art Enemies: Fight unique villains that react to your typing with attack animations.</li>
+                        <li>Boss Health Bar: Your word count goal is visualized as an enemy health bar to defeat.</li>
+                    </ul>
+                    <h4><b><u>2) Progress & Customization: </u></b></h4>
+                    <ul style="list-style-type:disc;">
+                        <li>Real-Time Stats: Track word count, remaining words, and earned XP live during your session.</li>
+                        <li>Custom Goal Setting: Set and conquer any target, from 500-word blogs to 50,000-word novels.</li>
+                        <li>XP & Reward System: Earn Experience Points for defeating enemies to unlock avatar items and upgrades.</li>
+                    </ul>
+                    <h4><b><u>3) Motivational Feedback: </u></b></h4>
+                    <ul style="list-style-type:disc;">
+                        <li>Satisfying Combat Effects: Enjoy attack animations, damage numbers, and victory screens.</li>
+                        <li>Progress Visualization: Dual tracking via enemy health bar and traditional progress meter.</li>
+                        <li>Goal Completion Rewards: Receive substantial XP bonuses and visual celebrations for defeating bosses.</li>
+                    </ul>
+                    <!-- <ul>
+
+                        <li>Secure Google OAuth login.</li>
+
+                        <li><b>Levels 6-8:</b></li>
+                        <p>Teaching Core Mechanic of platform restoration & resource management</p>
+                        <li><b>Level 9:</b></li>
+                        <p>Bonus level for pressure release & fun</p>
+                        <li><b>Levels 10-17:</b></li>
+                        <p>Complex puzzles combining all mechanics</p>
+                    </ul> -->
+                </p>
+                <p></p>
             </div>
+
+            </div>
+
+
+            <!-- Row 3 -->
+            <!-- YouTube Video Embed -->
 
 
         </section>
-
 
         <!-- Mechanic Exploration Section -->
         <section class="project-section">
-            <h2 class="section-title">Ideation</h2>
-            <p>
-                <h3><strong>Design goal:</strong></h3>
-            </p>
-            <p>
-                <b>To capture the fun of playful couch fights between two friends 
-            </p>
-            <p> both in and off screen as they play a 1 v 1 fighting game.</b></p>
+            <h2 class="section-title">Process</h2>
+            <div class="project-row">
+                <div class="text-col">
+                    <p>
+                        <h3><u><strong>1) Identifying a domain</strong></u></h3>
+                    </p>
+                    <br>
+                    <p>
+
+                        Chosen domain: Productivity-> Writing (Sub-domain) The project began with the identification of Productivity as the core domain, with a specific focus on Writing. This choice was driven by a personal interest in the craft and a recognition of its challenges,
+                        presenting a clear opportunity for design-led innovation.
+                    </p>
+                    <p>
+                        <h3><u><strong>2) Market Survey</strong></u></h3>
+                    </p>
+                    <br>
+                    <p>
+
+                        An initial analysis of writing applications revealed a market gap: while most tools excelled at editing, they failed to solve the core challenges of starting and maintaining a writing habit.
+                    </p>
+                    <p>A targeted user survey confirmed this, highlighting a strong desire for better motivational tools over purely functional ones. This research also uncovered niche, narrative-focused apps like Ulysses, shaping our understanding of the
+                        specialized user base.
+                    </p>
+                </div>
+                <div class="img"><img src="images/proj4/process_1.png" alt="Level Design" width="500px" /></div>
+                <br>
+                <br>
+
+            </div>
+            <!-- <div class="project-row" margin="0 0 10px">
+
+                <div class="img-col">
+                    <img src="images/proj4/ms1.png" alt="Level Design" />
+                </div>
 
 
-            <!-- Row 1 -->
-            <div>
+                <div class="img-col">
+                    <img src="images/proj4/ms2.png" alt="Level Design" />
+                </div>
+
+
+            </div> -->
+
+            <div class="project-row">
+                <div class="text-col">
+                    <h3><u>Key Competitor Insights:</u>
+                    </h3>
+                    <!-- <p> both in and off screen as they play a 1 v 1 fighting game.</b></p> -->
+                    <p>
+                        <ul style="list-style-type:disc;">
+                            <li><b>OhWrite:</b> Showed that peer-based accountability can create stressful competition, undermining creative autonomy.</li>
+                            <li><b>Squibler:</b> Used "panic mechanics" (losing work) to force initiation, but this approach is unsustainable and stressful for long-term engagement.</li>
+                            <li><b>WrittenKitten:</b> Proved that simple, positive reinforcement works, but repetitive rewards lose their effectiveness over time.</li>
+                        </ul>
+
+                    </p>
+
+                </div>
+                <div class="img"><img src="images/proj4/ms3.png" alt="Level Design" width="600px" /></div>
+
+            </div>
+
+
+
+            <p>
+                <h3><u><strong>3) Opportunity space:</strong></u></h3>
+            </p>
+            <br>
+            <p>
+
+                Faculty guidance shifted the focus from features to the underlying psychology of motivation. The goal became to identify the intrinsic motivators that would drive users to engage with the app consistently.
+            </p>
+
+            <div class="project-row" margin="0 0 10px">
 
                 <div class="img">
-                    <h3>
-                        Complexity graph: (Used actual playtested values)
-                    </h3>
-                    <center><img src="images/proj2/1.png" alt="Ideation" /></center>
-
-                    <p class="video-caption"> Wanted to capture the nostalgic emotion.</p>
-                    <p>
-
-                    </p>
-                    <p>
-                        <br><strong>Ideation time:</strong> ~3–4 hours
-                        <br><strong>Team:</strong> 3 Designers
-
-                        <br><strong>Iterations:</strong> 12+
-                    </p>
-                </div>
-
-                <div class="text-col">
-
-                    <p>
-
-                    </p>
+                    <img src="images/proj4/gamification_exploration_page-0001.jpg" alt="Level Design" />
 
                 </div>
 
-            </div>
-        </section>
 
-        <!-- Level Design Section -->
-        <section class="project-section">
-            <h2 class="section-title">Game Design Process</h2>
-
-            <!-- Row 1 -->
-            <p>Our main challenge was that Couch Clash isn’t just one game; it’s two things happening at once: a 2D PvP fight and a 3D distraction game, played by two players simultaneously. Balancing attention and enjoyment between these layers was the
-                toughest part.</p>
-            <p>
-                <div class="project-row">
-                    <div class="text-col">
-                        <p>
-                            <h2><strong>Cognitive Load Study</strong></h2>
-                        </p>
-
-
-                        <h3><u>The challenge:</u>
-                        </h3>
-            </p>
-            <p>
-                <ul style="list-style-type:disc;">
-                    <li><b>Both worlds are equally fun</b>, so players care to engage in each.</li>
-                    <li>It doesn’t turn into <b>parallel play</b> — players shouldn’t focus on only 2D or only 3D.</li>
-                    <li><b>It feels fair,</b> while still delivering the thrill of unfair play that defines our design goal.</li>
-                </ul>
-
-            </p>
-
-            </div>
-            <div class="img-col" width="120%">
-                <img src="images/proj2/cognitive.png" alt="Level Design" />
-            </div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="project-row" width="10rem">
-                <div class="img-col">
-                    <img src="images/proj2/9.png" alt="Mechanic Use Case" />
-
+                <div class="img">
+                    <img src="images/proj4/Octalysis_Framework.png" alt="Level Design" width="300px" />
                 </div>
-                <div class="text-col">
-                    <p>
-                        <h3><strong>Visual Representation</strong></h3>
-                    </p>
-                    <p>We designed the visual focus intentionally. About 70% attention on the 3D scene (the players and their actions) and 30% on the 2D fight, since players would naturally fixate on the in-game battle.</p>
-                    <p>
-                        <ul style="list-style-type:disc;">
-                            <li><b><u>Instant clarity:</u></b> One frame communicates both worlds at once.</li>
-                            <li><b><u>Shared focus:</u></b> Players stay aware of both 2D and 3D actions.</li>
-                            <li><b><u>Natural emotion:</u></b> The scene itself tells the story — no UI needed.</li>
-                        </ul>
 
-                    </p>
-                </div>
-            </div>
 
             </div>
-
-        </section>
-
-        <section class="project-section">
-            <h2 class="section-title">Playtesting iterations</h2>
-
-            <!-- Row 1 -->
-            <div class="project-row">
-                <div class="text-col">
-
-                    <p>
-                        <ul style="list-style-type:disc;">
-                            <li><b><u>Improved UI for better clarity and feedback.</u></b></li>
-                        </ul>
-
-                    </p>
-                    <p>
-                        Introduced icons alongside text to make the interface more readable and intuitive. The attack cooldown was redesigned for clearer visibility and faster player recognition.</p>
-                </div>
-                <div class="img-col">
-                    <img src="images/proj2/HUD.png" alt="Level Design" />
-                </div>
-            </div>
-
-            <!-- Row 2 -->
-
+            <p class="video-caption" margin="0 0"> Domain research revealed the key motivators to write for people: Purpose, Autonomy and Mastery</p>
+            <br>
             <div class="text-col">
-                <p>
-                    <ul style="list-style-type:disc;">
-                        <li><b><u>Upgraded 3D Character Models</u></b></li>
-                    </ul>
-
+                <p>The problem was framed using the Octalysis Gamification Framework, specifically targeting the Creator archetype. The design was built to activate key motivational drivers:
                 </p>
-            </div>
-
-            <div class="project-row">
-
-                <div class="img-col">
-                    <img src="images/proj2/fart_old.gif" alt="Mechanic Use Case" />
-                </div>
-
-
-                <div class="img-col">
-                    <img src="images/proj2/fart_new.gif" alt="Mechanic Use Case" />
-                </div>
-
-
-            </div>
-            <center>
-                <p>
-                    The old skinny avatars were replaced with fully realized 3D characters, each designed with distinct personalities and animations that reflect their attack styles.</p>
-            </center>
-            <div class="text-col">
 
                 <p>
                     <ul style="list-style-type:disc;">
-                        <li><b><u>Key Learnings</u></b></li>
+                        <li><b><u>Epic Meaning & Calling:</u></b>Framing writing as a heroic quest to overcome Writer’s Block.</li>
+                        <li><b><u>Development & Accomplishment: </u></b> Progress bars and levels to mark growth.</li>
+                        <li><b><u>Empowerment & Creativity: </u></b> Structured prompts with open creative freedom.</li>
+                        <li><b><u>Ownership & Possession: </u></b> Personal portfolios and avatar customization for identity and investment.</li>
+
                     </ul>
-
                 </p>
+                <br>
+            </div>
+            <div class="text-col">
                 <p>
-                    <p>
-                        <strong>1. Balancing the Game:</strong><br> Creating both a 2D brawler and a 3D distraction system was tough. Balancing them so both felt equally fun and fair was a major learning.
-                    </p>
+                    <h3><u><strong>User Insights</strong></u></h3>
+
+                    User Insights Analytical observation revealed a key challenge: idea evaporation. Many people have untold stories but lack a structured system to capture and develop them. To explore this further, a second round of face-to-face interviews with six participants
+                    was conducted. Most were designers who had their own note-taking methods, yet all struggled with one common issue: maintaining consistency.
+                </p>
+
+                <p>To explore this further, a second round of <b>face-to-face interviews with six participants</b> was conducted. Most were designers who had their own note-taking methods, yet all struggled with one common issue — maintaining consistency.</p>
+
+
+                <p>These were the responses:</p>
+            </div>
+            <div class="project-row" margin="0 0 10px">
+
+                <div class="img-col">
+                    <img src="images/proj4/1.png" alt="Level Design" />
+                </div>
+
+
+                <div class="img-col">
+                    <img src="images/proj4/2.png" alt="Level Design" />
+                </div>
+                <div class="img-col">
+                    <img src="images/proj4/3.png" alt="Level Design" />
+                </div>
+                <div class="img-col">
+                    <img src="images/proj4/4.png" alt="Level Design" />
+                </div>
+            </div>
+            <div class="img">
+                <img src="images/proj4/5.png" alt="Level Design" width="700px" />
+            </div>
+
+
+            <div class="text-col">
+                <p>
+                    <h3><u><strong>4) Problem Statement:</strong></u></h3>
+                </p>
+
+                <p><b><u>
+            <h4><center>Aspiring fiction writers struggle with consistency & motivation when trying to make writing a daily habit. </center></h4></u></b></p>
+                <p>
+                    <h4><u>Key Challenges:</u></h4>
+                </p>
+
+                <p>
+                    <ul style="list-style-type:disc;">
+                        <li>Most writing apps act as passive tools, offering functionality but not motivation.</li>
+                        <li>Generic prompts fail to inspire — they often feel irrelevant or overwhelming.</li>
+                        <li>Inconsistent daily routines make it difficult to build and sustain a writing habit.</li>
+
+                    </ul>
+                    <br>The goal was to design a system that not only supports writing but actively nurtures motivation and creative flow.
+                </p>
+
+            </div>
+
+            <div class="text-col">
+                <p>
+                    <h3><u><strong>5) User Personas: </strong></u></h3>
+                </p>
+
+                <!-- Row 1 -->
+                <p>Through qualitative interviews & behavioral observation, three primary user personas emerged; each highlighting unique motivations and barriers around consistent writing.</p>
+            </div>
+            <div class="project-row">
+                <div class="text-col">
+                    <h3><u>Persona 1: Fatima Quddus</u></h3>
 
                     <p>
-                        <strong>2. Seamless Integration:</strong><br> I learned how to make two different worlds feel like one continuous experience, where 2D and 3D interactions naturally flow together.
+                        <ul style="list-style-type:disc;">
+                            <b><u>Age: </u></b>26<br>
+                            <b><u>Writing Type: </u></b>Journaling, Fiction/Fanfiction, Academic Writing<br>
+                            <b><u>Pain Points: </u></b> Lack of motivation, Perfectionism<br>
+                            <b><u>User Insight: </u></b> Fatima represents writers who enjoy expressing themselves but struggle with self-criticism and maintaining motivation over time.<br>
+                        </ul>
                     </p>
 
+                </div>
+                <div class="img-col" width="120%">
+                    <img src="images/proj4/p1.png" alt="Level Design" />
+                </div>
+            </div>
+            <div class="project-row">
+                <div class="img-col" width="120%">
+                    <img src="images/proj4/p2.png" alt="Level Design" />
+                </div>
+
+
+
+                <div class="text-col">
+                    <h3><u> Persona 2: Smilla Smiba</u></h3>
+
+
                     <p>
-                        <strong>3. Rendering 2D into 3D:</strong><br> Figuring out how to display the 2D game within the 3D world taught me how design and tech can merge to create a cohesive space.
+                        <ul style="list-style-type:disc;">
+                            <b><u>Age: </u></b>22<br>
+                            <b><u>Writing Type: </u></b> Creative Writing, Fiction/Fanfiction<br>
+                            <b><u>Pain Points: </u></b> Low motivation, Difficulty building habits, Writing quality<br>
+                            <b><u>User Insight: </u></b> Smilla embodies the imaginative writer who seeks guidance and creative momentum to stay consistent.<br>
+                        </ul>
                     </p>
+                </div>
+
+            </div>
+            <div class="project-row">
+
+
+
+                <div class="text-col">
+                    <h3><u>Persona 3: Neharika</u></h3>
+
+
+                    <p>
+                        <ul style="list-style-type:disc;">
+                            <b><u>Age: </u></b>23<br>
+                            <b><u>Writing Type: </u></b>Diary Writing, Idea Capture<br>
+                            <b><u>Pain Points: </u></b> Lack of motivation and visibility of writing practice<br>
+                            <b><u>User Insight: </u></b> Neharika reflects users who need visual presence and gentle cues to trigger daily writing habits.<br>
+                        </ul>
+                    </p>
+                </div>
+                <div class="img-col" width="120%">
+                    <img src="images/proj4/p3.png" alt="Level Design" />
+                </div>
+
+            </div>
+
+            <div class="text-col">
+                <p>
+                    <h3><u><strong>6) Solution Proposal</strong></u></h3>
+                </p>
+
+                <!-- Row 1 -->
+                <p>After an extensive research journey; from behavioral analysis and motivational mapping to iterative ideation: the insights converged into two complementary design interventions. Each solution addresses a distinct but connected challenge
+                    within the writing journey: one sustains momentum in the act of writing, and the other bridges the gap between lived experience and creative expression.</p>
+
+                <h3><u>Solution 1: WriterRPG: A Word-to-Word Writing Motivator</u>
+                </h3>
+            </div>
+            <div class="project-row">
+
+                <div class="text-col">
+
+                    <p>Research revealed a crucial insight: existing systems fail to maintain moment-to-moment motivation without distraction or pressure. WriterRPG answers this by transforming the act of writing into an interactive, gamified flow experience
+                        where every word becomes an action and every sentence a step forward in a heroic quest.</p>
+                    <p>
+                        <ul style="list-style-type:disc;">
+                            <b><u>Core Idea: </u></b>Reward momentum, not completion.<br>
+                            <b><u>Mechanic: </u></b>A 2D battle where typing words powers the player’s attack progress visualized as the enemy’s health bar depletes.<br>
+                            <b><u>Gamification: </u></b> XP and daily goals create micro-motivation loops, making consistency rewarding and emotionally uplifting.<br>
+                        </ul>
+                    </p>
+                </div>
+                <div class="img" width="100px">
+                    <img src="images/proj4/wrirer.png" alt="Level Design" width="450px" />
+                </div>
+            </div>
+            <div class="text-col">
+                <h3><u>Psychological Framework:</u></h3>
+                Grounded in Self-Determination Theory, WriterRPG integrates the three pillars of motivation:
+
+                <p>
+                    <ul style="list-style-type:disc;">
+                        <b><u>Purpose: </u></b>Writing fuels the story world; every word strengthens the hero.<br>
+                        <b><u>Autonomy: </u></b>Users write at their own pace; combos reward flow without punishment.<br>
+                        <b><u>Mastery: </u></b>(Future Scope) AI celebrates linguistic growth and creativity.<br>
+                    </ul>
                 </p>
             </div>
+            <h3><u>Solution 2: Writer’s Net: A Personalized Idea Companion</u>
+            </h3>
 
-        </section>
+            <div class="project-row">
 
+                <div class="text-col">
 
-
-
-        <section class="project-section">
-            <h2 class="section-title">IGDC Highlights — Best Indie Spotlight 🏆</h2>
-
-            <p class="bento-igdc-intro">
-                We won the <strong>Best Indie Spotlight</strong> at IGDC — powered by the community with
-                <strong>660 votes</strong>. Here are a few moments from the floor: playtests, smiles, and that “we actually did it” feeling.
-            </p>
-
-            <div class="bento-igdc-grid" aria-label="IGDC event photo grid">
-                <!-- Tile A: Hero (wide) -->
-                <figure class="bento-igdc-tile c-7 r-2 bento-igdc-hero">
-                    <img src="images/proj2/awards_stage.jpeg" alt="Players crowding around the Couch Clash booth, cheering during a match" loading="lazy" />
-                    <figcaption>That moment on stage ✨</figcaption>
-                    <div class="bento-igdc-badge">
-                        <span class="badge-pill">🏆 Best Indie Spotlight</span>
-                        <span class="badge-pill">660 Votes</span>
-                    </div>
-                </figure>
-
-                <!-- Tile B: Tall portrait -->
-                <figure class="bento-igdc-tile c-5 r-2">
-                    <img src="images/proj2/happy_user.jpeg" alt="Close-up of two players on the couch, one laughing while the other gets distracted" loading="lazy" />
-                    <figcaption>Playtests, laughter, feedback, repeat.</figcaption>
-                </figure>
-
-                <!-- Row 2: Three smalls -->
-                <figure class="bento-igdc-tile c-4 r-1">
-                    <img src="images/proj2/duo_guide.jpeg" alt="Display screen showing 2D fight with 3D couch scene in the same frame" loading="lazy" />
-                    <figcaption>Booth rush during a Couch Clash showdown</figcaption>
-                </figure>
-
-                <figure class="bento-igdc-tile c-4 r-1">
-                    <img src="images/proj2/presentation.jpeg" alt="Award moment on stage with team holding the trophy" loading="lazy" />
-                    <figcaption>Presenting the game.</figcaption>
-                </figure>
-
-                <figure class="bento-igdc-tile c-4 r-1">
-                    <img src="images/proj2/awards_yellow.jpeg" alt="Players giving feedback and laughing after a match" loading="lazy" />
-                    <figcaption>Capturing the moment!</figcaption>
-                </figure>
+                    <p>While WriterRPG sustains writing momentum, Writer’s Net tackles the problem that comes before writing even begins; capturing inspiration. Research into existing writing tools revealed a major gap: most platforms support productivity,
+                        not creativity.</p>
+                    <p>Writer’s Net bridges this gap by turning everyday experiences into writing prompts. It listens, not instructs, transforming users’ daily activities into creative cues that inspire writing naturally.</p>
+                    <p>
+                        <ul style="list-style-type:disc;">
+                            <b><u>Core Idea: </u></b>You already have something worth writing about<br>
+                            <b><u>Mechanic: </u></b>Context-aware micro-prompts based on real-world data (location, media use, habits).<br>
+                            <b><u>AI Integration: </u></b> A Narrative Synthesizer compiles daily fragments into cohesive story seeds.<br>
+                        </ul>
+                    </p>
+                </div>
+                <div class="img">
+                    <img src="images/proj4/Group 3896.png" alt="Level Design" width="300px" />
+                </div>
+            </div>
+            <div class="img">
+                <img src="images/proj4/table.png" alt="Level Design" width="700px" />
             </div>
 
-            <p class="bento-igdc-outro">
-                <em>Thank you to everyone who played, voted, and cheered.</em>
-            </p>
         </section>
+
+
+
+
 
 
         <center>
@@ -1133,13 +1252,13 @@
 
         <div class="project-nav">
             <a href="index.html" class="back-to-home">← Back to Portfolio</a>
-            <a href="project2.html">Next Project: Tactical FPS Level Design →</a>
+            <a href="patience_game_poem.html">Next Project: Patience →</a>
         </div>
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2023 Game Design Portfolio. All rights reserved.</p>
+            <p>&copy; 2025 Game Design Portfolio. All rights reserved.</p>
         </div>
     </footer>
 

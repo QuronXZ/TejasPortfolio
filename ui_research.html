@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IsoCare: UI/UX Research</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Page Load Animation */
+        
+         :root {
+            --trail-width: 8px;
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --text-light: #95a5a6;
+            --spacing-sm: 15px;
+            --spacing-md: 25px;
+            --spacing-lg: 40px;
+            --border-radius: 12px;
+            --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        /* keep svg positioning the same */
+        
+        svg.trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        /* use the SVG gradient as the stroke */
+        
+        svg.trail path {
+            fill: none;
+            stroke: url(#trailGradient);
+            /* <- gradient stroke */
+            stroke-width: var(--trail-width);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        /* smooth color transitions for stops */
+        
+        #trail-stop-1,
+        #trail-stop-2,
+        #trail-stop-3 {
+            transition: stop-color 2s linear;
+            /* smooth interpolation between color states */
+        }
+        /* Canvas for flowing particles */
+        
+        #flowingCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* This ensures the canvas covers the whole screen and sits behind content */
+        
+        #trailCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Allow content interactions */
+            z-index: -1;
+            /* Keep the canvas behind all content */
+        }
+        
+        body {
+            animation: fadeIn 0.6s ease-in-out;
+            background-color: #fafafa;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .project-page {
+            padding: 120px 5% 80px;
+            animation: slideUp 0.8s ease-out;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .project-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+            color: #6c5ce7;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .project-header p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        /* Project Sections */
+        
+        .project-section {
+            margin-bottom: var(--spacing-lg);
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+            font-weight: 600;
+            border-bottom: 3px solid #6c5ce7;
+            padding-bottom: var(--spacing-sm);
+            display: inline-block;
+        }
+        /* Project Rows */
+        
+        .project-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md) 0;
+        }
+        
+        .project-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .text-col {
+            padding: var(--spacing-md);
+        }
+        
+        .text-col p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+        
+        .text-col p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .img-col {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .img-col:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .img-col img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .img-col:hover img {
+            transform: scale(1.05);
+        }
+        /* Full-width image sections */
+        
+        .img {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            margin: var(--spacing-sm) 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .img img:hover {
+            transform: scale(1.02);
+        }
+        
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .project-content h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 15px;
+            color: #2d3436;
+        }
+        
+        .project-content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .project-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #636e72;
+        }
+        
+        .project-content ul {
+            margin-bottom: 25px;
+        }
+        
+        .project-content li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #636e72;
+        }
+        
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid #dfe6e9;
+        }
+        
+        .project-nav a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #6c5ce7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .project-nav a:hover {
+            background-color: #5649c0;
+            transform: translateY(-3px);
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-top: 20px;
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-to-home:hover {
+            text-decoration: underline;
+        }
+        /* Video Section */
+        
+        .video-section {
+            max-width: 1000px;
+            margin: var(--spacing-lg) auto;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--border-radius);
+        }
+        
+        .video-caption {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: var(--spacing-sm);
+        }
+        /* Staggered content animation */
+        
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .project-content>* {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+        
+        .project-content>*:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+        
+        .project-content>*:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .project-content>*:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .project-content>*:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+        
+        .project-content>*:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+        
+        .project-content>*:nth-child(6) {
+            animation-delay: 0.9s;
+        }
+        
+        .project-content>*:nth-child(7) {
+            animation-delay: 1s;
+        }
+        
+        .project-content>*:nth-child(8) {
+            animation-delay: 1.1s;
+        }
+        /* Navigation */
+        
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: var(--spacing-lg) auto 0;
+            padding-top: var(--spacing-lg);
+            border-top: 2px solid #ecf0f1;
+        }
+        
+        .project-nav a {
+            display: inline-block;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .project-nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-top: var(--spacing-md);
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            color: #5649c0;
+            text-decoration: underline;
+        }
+        /* Center aligned content */
+        
+        center {
+            text-align: center;
+            margin: var(--spacing-md) 0;
+        }
+        /* Text enhancements */
+        
+        h2 {
+            font-size: 2rem;
+            margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        h2:first-child {
+            margin-top: 0;
+        }
+        /* Responsive adjustments */
+        
+        @media (max-width: 968px) {
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            .img-col {
+                order: -1;
+            }
+            .project-header h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .text-col p {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-page {
+                padding: 100px 3% 60px;
+            }
+            .project-section {
+                padding: var(--spacing-md);
+            }
+            .project-nav {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                align-items: center;
+            }
+            .project-nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        .project-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: #2196F3;
+            color: white;
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0b7dda;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Canvas for flowing 3D particles -->
+    <canvas id="flowingCanvas"></canvas>
+    <!-- This is the canvas that will display the cursor trail -->
+    <canvas id="trailCanvas"></canvas>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- <a href="index.html#home">GD<span>Portfolio</span></a> -->
+                <img src="images/logo_new.png" alt="Tejas Logo" width="200px" />
+
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <!-- <li><a href="index.html#skills">Skills</a></li> -->
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-page">
+        <div class="project-header">
+            <h1>IsoCare: From Isolation to Awareness</h1>
+            <p>
+                Designing Clarity for Patients Undergoing Nuclear Medicine Therapy
+            </p>
+        </div>
+        <!-- Action Buttons -->
+        <div class="project-buttons">
+            <!-- <a href="https://quron.itch.io/crumbling-skyways" class="btn btn-primary" target="_blank">
+                🎮 Play now!
+            </a> -->
+            <a href="gdd/Nuclear_ui_ux.pdf" class="btn btn-secondary" target="_blank">
+                📋 Check out the GDD →
+            </a>
+        </div>
+        <!-- YouTube Video Embed -->
+        <!-- <div class="video-section">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/TM--QmDczN8?si=erraDvUjO0uDVU1y" title="Fantasy RPG World Design - Project Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+            </div>
+            <p class="video-caption">
+                Project Showcase Video - Watch the full walkthrough
+            </p>
+        </div> -->
+
+        <section class="project-section">
+
+            <h2 class="section-title">Overview</h2>
+            <div class="img">
+                <img src="images/proj6/_- visual selection (4) 1.png" alt="Crumbling Skyways Overview" width="600px" />
+            </div>
+
+            <!-- Row 1: Text Left, Image Right -->
+
+            <div class="text-col">
+                <p><strong>Title:</strong> IsoCare — From Isolation to Awareness</p>
+                <p><strong>Tool:</strong> Figma</p>
+                <p><strong>Time to design and develop:</strong> 2 weeks</p>
+                <p><strong>Team size:</strong> 3</p>
+                <p><strong>Genre:</strong> UX Research & Healthcare Design</p>
+                <p><strong>Core Idea:</strong> To bridge the communication gap between doctors and patients undergoing nuclear medicine (radionuclide) therapy, by creating a human-centered digital tool that simplifies medical guidance and provides emotional
+                    reassurance during recovery.</p>
+                <p>
+                    <strong>Description:</strong> IsoCare is a patient-awareness and recovery app that simplifies isotope care into clear visuals, gentle reminders, and emotional reassurance. It helps patients feel informed and calm during recovery while
+                    reducing repetitive explanations for doctors. Created in collaboration with Dr. Anup Ghumare (Radiation Medicine Centre, BARC), it reimagines healthcare communication through empathy and design clarity.
+                </p>
+            </div>
+
+
+
+        </section>
+
+        <!-- Mechanic Exploration Section -->
+        <section class="project-section">
+            <h2 class="section-title">Idea and Problem recognition:</h2>
+
+            <!-- Row 1 -->
+
+
+            <div class="text-col">
+
+                <p>“Can I hug my daughter?”<br> “When can I cook again?”</p>
+                <br> A late-night conversation with a friend; a nuclear medicine resident; revealed a hidden emotional layer in post-therapy care. Patients, recently treated with radioactive isotopes, often struggle with fear, confusion, and emotional
+                isolation due to unclear medical instructions. <br><br>That moment planted a question: <br><b>What if medical care after isolation felt a little more like guidance, not restriction?</b>
+
+
+            </div>
+
+        </section>
+
+        <!-- Level Design Section -->
+        <section class="project-section">
+            <h2 class="section-title">Research:</h2>
+
+            <!-- Row 1 -->
+            <div class="project-row">
+                <div class="text-col">
+                    <p>
+                        <h3><strong><u>Foundational Study</u></strong></h3>
+                    </p>
+                    We began by reviewing scientific papers and medical guidelines to understand:
+                    <p>
+                        <ul style="list-style-type:disc;">
+                            <li>Different isotopes, their decay times, and post-therapy safety measures.</li>
+                            <li>The workflow of radionuclide therapy and patient aftercare.</li>
+                        </ul>
+                        <br>
+                        <h4><strong>Key Sources Reviewed:</strong></h4>
+                        <ul style="list-style-type:disc;">
+                            <li><b>IAEA (International Atomic Energy Agency)</b> Explained isotope decay and temporary radiation effects.</li>
+                            <li><b>ScienceDirect</b> Highlighted the need for clear, tailored patient instructions.</li>
+                            <li><b>PubMed</b> Showed that patient education directly reduces anxiety and improves compliance.</li>
+                        </ul>
+                    </p>
+
+                </div>
+                <div class="img-col">
+                    <img src="images/proj6/Secondary _ Literature Research - visual selection 1.png" alt="Level Design" />
+                </div>
+            </div>
+            <center>
+                <div class="text-col">
+                    <h3><strong>Core Insights</strong></h3>
+                    <p>We discovered that:</p>
+                    <ul style="list-style-type:disc;">
+                        <li>Post-therapy care is often simple, but communicated in complex language.</li>
+                        <li>Doctors face burnout from explaining the same details repeatedly.</li>
+                        <li>Patients feel isolated and fearful, unsure of what’s truly safe.</li>
+                    </ul>
+                </div>
+            </center>
+
+            <!-- Row 2 -->
+            <div class="project-row">
+                <div class="img-col">
+                    <img src="images/proj6/evid_map.png" alt="Mechanic Use Case" />
+                </div>
+                <div class="text-col">
+                    <h3><strong><u>Primary Interviews</u></strong></h3>
+                    <p>To humanize our findings, we spoke with:</p>
+                    <ul style="list-style-type:disc;">
+                        <li>A nuclear medicine resident (my friend Anoop )</li>
+                        <li>Two patients who recently underwent isotope therapy</li>
+                    </ul>
+                    These conversations confirmed and expanded our earlier insights, revealing overlapping emotional and informational challenges for both sides.
+                </div>
+            </div>
+
+            <div class="text-col">
+                <h3><strong><u>Evidence Mapping:</u></strong></h3>
+            </div>
+            <p>We validated interview findings with blogs, patient stories, and medical articles, layering multiple forms of evidence.</p>
+            <div class="img">
+                <img src="images/proj6/Nuclear 7.png" alt="Level Design" />
+            </div>
+
+            <!-- Row 1 -->
+
+            <div class="text-col">
+                <h3><strong><u>Emerging Patterns:</u></strong></h3>
+                <p>To humanize our findings, we spoke with:</p>
+                <ol>
+                    <li><i>“Too much told, too little remembered.”</i></li>
+                    <li><i>“Repetition replaces empathy.”</i></li>
+                    <li><i>“Therapy ends, anxiety doesn’t.”</i></li>
+                    <li><i>“Physical isolation becomes emotional isolation.”</i></li>
+                    <li><i>“Unseen progress fuels unseen anxiety.”</i></li>
+                    <li><i>“Precision versus comprehension.”</i></li>
+                </ol>
+                <br> There is a communication gap between clinical precision and emotional understanding. Patients don’t need more information; they need clear, human-centered guidance.
+            </div>
+
+
+
+
+            <div class="img">
+                <h3>
+                    Decoding the Patient Experience
+                </h3>
+                <center><img src="images/proj6/Group 24.png" alt="Mechanic Use Case" /></center>
+            </div>
+
+
+            <!-- Row 3 -->
+            <!-- YouTube Video Embed -->
+
+        </section>
+        <section class="project-section">
+            <h2 class="section-title">Design Brief Formation</h2>
+
+            <!-- Row 1 -->
+            <p>Recurring patterns of confusion, emotional fatigue, and communication gaps revealed an opportunity to design a bridge connecting clinical clarity with emotional reassurance.</p>
+            <div class="text-col">
+                <p><strong><u>Brief: </u>Create a human-centered system that simplifies medical communication, clarifies safety information, and emotionally supports patients throughout recovery.</strong></p>
+
+
+                <p>To design an intuitive, empathetic digital tool that helps patients:</p>
+                <ul style="list-style-type:disc;">
+                    <li>Track their recovery progress</li>
+                    <li>Understand isotope safety in simple visuals</li>
+                    <li>Receive gentle reminders and reassurance</li>
+                    <li>Reduce doctors’ repetitive workload</li>
+                </ul>
+            </div>
+
+            <div class="img">
+                <h3>
+                    Defining Core Needs & Priorities
+                </h3>
+                <center><img src="images/proj6/priority.png" alt="Mechanic Use Case" width="800px" /></center>
+            </div>
+
+
+
+        </section>
+        <section class="project-section">
+            <h2 class="section-title">Solution</h2>
+
+
+            <div class="img"><img src="images/proj6/Nuclear 13.png" alt="Mechanic Use Case" /></div>
+            <div class="img"><img src="images/proj6/Nuclear 14.png" alt="Mechanic Use Case" /></div>
+            <div class="img"><img src="images/proj6/Nuclear 15.png" alt="Mechanic Use Case" /></div>
+            <div class="img"><img src="images/proj6/Nuclear 16.png" alt="Mechanic Use Case" /></div>
+            <div class="img"><img src="images/proj6/Nuclear 17.png" alt="Mechanic Use Case" /></div>
+
+
+
+
+
+            <center>
+                <h2>
+                    THANK YOU
+                </h2>
+            </center>
+
+        </section>
+
+        <div class="project-nav">
+            <a href="index.html" class="back-to-home">← Back to Portfolio</a>
+            <a href="lab_genesis.html">Next Project: Lab Genesis →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Game Design Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <svg class="trail">
+  <defs>
+    <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff99cc" />
+      <stop offset="50%" stop-color="#99ccff" />
+      <stop offset="100%" stop-color="#ccff99" />
+    </linearGradient>
+  </defs>
+  <path></path>
+</svg>
+
+    <script>
+        const svg = document.querySelector('svg.trail');
+        const path = svg.querySelector('path');
+        // const gradient = document.querySelector('#trailGradient');
+
+        let points = [];
+        let segments = 35;
+        let mouse = {
+            x: 0,
+            y: 0
+        };
+
+        const move = (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            mouse.x = x;
+            mouse.y = y;
+
+            if (points.length === 0) {
+                for (let i = 0; i < segments; i++) points.push({
+                    x,
+                    y
+                });
+            }
+        };
+
+        const anim = () => {
+                let px = mouse.x;
+                let py = mouse.y;
+
+                points.forEach((p, index) => {
+                    p.x = px;
+                    p.y = py;
+
+                    let n = points[index + 1];
+                    if (n) {
+                        px = px - (p.x - n.x) * 0.6;
+                        py = py - (p.y - n.y) * 0.6;
+                    }
+                });
+                const d = `M ${points.map((p) => `${p.x} ${p.y}`).join(' L ')}0`;
+  path.setAttribute('d', d);
+  //path.setAttribute('d', `M ${points.map((p) => `${p.x} ${p.y}`).join(' L ')}`);
+  requestAnimationFrame(anim);
+};
+
+const resize = () => {
+  const ww = window.innerWidth;
+  const wh = window.innerHeight;
+  svg.style.width = ww + 'px';
+  svg.style.height = wh + 'px';
+  svg.setAttribute('viewBox', `0 0 ${ww} ${wh}`);
+};
+
+// 🌈 Gradient color shifting
+const gradient = document.querySelector('#trailGradient');
+const colors = [
+  ['#ff99cc', '#99ccff', '#ccff99'],
+  ['#ffaaff', '#aaffcc', '#aaccff'],
+  ['#ffcc99', '#cc99ff', '#99ffcc'],
+  ['#ffc0cb', '#87cefa', '#e0ffff']
+];
+let colorIndex = 0;
+
+function shiftGradient() {
+  const [c1, c2, c3] = colors[colorIndex];
+  gradient.children[0].setAttribute('stop-color', c1);
+  gradient.children[1].setAttribute('stop-color', c2);
+  gradient.children[2].setAttribute('stop-color', c3);
+  colorIndex = (colorIndex + 1) % colors.length;
+}
+setInterval(shiftGradient, 3000); // change every 3s
+
+document.addEventListener('mousemove', move);
+window.addEventListener('resize', resize);
+anim();
+resize();
+    </script>
+
+</body>
+
+</html>
