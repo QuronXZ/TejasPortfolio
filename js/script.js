@@ -51,11 +51,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const filterValue = button.getAttribute("data-filter");
 
       // Filter projects
+      // projectCards.forEach((card) => {
+      //   if (
+      //     filterValue === "all" ||
+      //     card.getAttribute("data-category") === filterValue
+      //   ) {
+      //     card.style.display = "flex";
+      //   } else {
+      //     card.style.display = "none";
+      //   }
+      // });
+
       projectCards.forEach((card) => {
-        if (
-          filterValue === "all" ||
-          card.getAttribute("data-category") === filterValue
-        ) {
+        const category = card.getAttribute("data-category");
+        const isHidden = card.classList.contains("hidden-proj");
+
+        // Hide secret project from "All"
+        if (isHidden && filterValue !== "other-games") {
+          card.style.display = "none";
+          return;
+        }
+
+        // Normal filtering
+        if (filterValue === "all" && !isHidden) {
+          card.style.display = "flex";
+        } else if (category === filterValue) {
           card.style.display = "flex";
         } else {
           card.style.display = "none";
@@ -145,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         75,
         window.innerWidth / window.innerHeight,
         0.1,
-        1000
+        1000,
       );
       camera.position.z = 50;
 
@@ -204,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       geometry.setAttribute(
         "position",
-        new THREE.BufferAttribute(positions, 3)
+        new THREE.BufferAttribute(positions, 3),
       );
       geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
       geometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
@@ -326,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const scrollObserver = new IntersectionObserver(
     animateOnIntersect,
-    observerOptions
+    observerOptions,
   );
 
   // Observe project cards
@@ -341,7 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== OTHER ELEMENTS ANIMATION =====
   const otherElements = document.querySelectorAll(
-    ".skill-category, .about-content, .contact-container"
+    ".skill-category, .about-content, .contact-container",
   );
 
   otherElements.forEach((element) => {
@@ -500,7 +520,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create bubble every 50ms max
       const distance = Math.sqrt(
         Math.pow(e.clientX - lastMousePos.x, 2) +
-          Math.pow(e.clientY - lastMousePos.y, 2)
+          Math.pow(e.clientY - lastMousePos.y, 2),
       );
 
       // Only create bubble if mouse moved enough distance

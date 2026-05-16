@@ -157,7 +157,9 @@ img {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+  transition:
+    width 0.6s,
+    height 0.6s;
 }
 
 .btn-primary:active::after {
@@ -503,6 +505,10 @@ img {
   cursor: pointer;
 }
 
+.hidden-proj {
+  display: none;
+}
+
 /* Alternate layout for even cards */
 
 .project-card:nth-child(even) {
@@ -513,7 +519,8 @@ img {
 
 .project-card.scroll-animate {
   opacity: 0 !important;
-  transition: opacity 1.2s cubic-bezier(0.215, 0.61, 0.355, 1),
+  transition:
+    opacity 1.2s cubic-bezier(0.215, 0.61, 0.355, 1),
     transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   will-change: opacity, transform;
 }
@@ -562,8 +569,33 @@ img {
   max-width: 55%;
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s,
+  transition:
+    opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s,
     transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
+}
+
+.limited-gif {
+  max-height: min(800px, 80vh);
+  width: auto;
+  max-width: min(600px, 80vh);
+  object-fit: contain;
+  display: flex;
+}
+
+.center-gif {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.image-caption {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
 }
 
 .project-card.animate-in .project-image {
@@ -618,8 +650,10 @@ img {
   font-weight: 700;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s,
-    transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, color 0.3s ease;
+  transition:
+    opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s,
+    transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s,
+    color 0.3s ease;
 }
 
 .project-card.animate-in .project-info h3 {
@@ -645,7 +679,8 @@ img {
   line-height: 1.8;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s,
+  transition:
+    opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s,
     transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s;
 }
 
@@ -660,7 +695,8 @@ img {
   gap: 10px;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s,
+  transition:
+    opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s,
     transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s;
 }
 
@@ -1142,7 +1178,8 @@ img {
       left: -20px;
       right: -20px;
       bottom: -20px;
-      background: radial-gradient(
+      background:
+        radial-gradient(
           ellipse at center,
           transparent 40%,
           rgba(255, 255, 255, 0.1) 70%,
@@ -1230,7 +1267,8 @@ img {
       border-radius: 50%;
       opacity: 0;
       backdrop-filter: blur(1px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+      box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.3),
         inset 0 0 10px rgba(255, 255, 255, 0.2);
     }
     /* White Bubbles */
